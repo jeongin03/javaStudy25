@@ -3,9 +3,9 @@ package ch01;
 public class UnicodeChar {
 
 	public static void main(String[] args) {
-		char c1 = 75 ;          // A¹®ÀÚ¸¦ Ãâ·ÂÇÏ±â À§ÇØ char¿¡ ´ëÀÔ
-		char c2 = 105 ;         // 10Áø¼ö 65¸¦ char¿¡ ´ëÀÔÇÏ¿© À¯´ÏÄÚµå
-		char c3 = 109 ;  // /u¶ó´Â À¯´ÏÄÚµåÇ¥¿¡ ÀÖ´Â 16Áø¼ö 41À» Ãâ·Â
+		char c1 = 75 ;          // Aï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ charï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		char c2 = 105 ;         // 10ï¿½ï¿½ï¿½ï¿½ 65ï¿½ï¿½ charï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+		char c3 = 109 ;  // /uï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Ç¥ï¿½ï¿½ ï¿½Ö´ï¿½ 16ï¿½ï¿½ï¿½ï¿½ 41ï¿½ï¿½ ï¿½ï¿½ï¿½
 		
 		char c4 = 75 ;
 		char c5 = 105 ;
@@ -18,7 +18,7 @@ public class UnicodeChar {
 		System.out.println(c3);
 		
 		
-		char han1 = '°¡' ;
+		char han1 = 'ê°€' ;
 		char han2 = 44032 ;
 		char han3 = '\uac00' ;
 		
@@ -26,9 +26,9 @@ public class UnicodeChar {
 		System.out.println(han2);
 		System.out.println(han3);
 		
-		int uniCode1 = '±è' ;
-		int uniCode2 = '±â' ;
-		int uniCode3 = '¿ø' ;
+		int uniCode1 = 'ë‚˜' ;
+		int uniCode2 = 'ë‹¤' ;
+		int uniCode3 = 'ë¼' ;
 		
 		System.out.println(uniCode1);
 		System.out.println(uniCode2);
