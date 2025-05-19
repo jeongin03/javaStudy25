@@ -9,3 +9,5 @@ JAVA는 17버전을 설치함
 
 교재는 자바 마스터 교재를 사용함
 [성적처리 프로그램 순서도.pptx](https://github.com/user-attachments/files/20276980/default.pptx)
+![슬라이드1](https://github.com/user-attachments/assets/a4340299-c8b4-4e2a-bb4e-8190320fd837)
+![슬라이드2](https://github.com/user-attachments/assets/080140e0-7ce0-49a1-841a-809dccaca70f)
