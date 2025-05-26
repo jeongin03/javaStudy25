@@ -1,0 +1,20 @@
+diff a/ch01/BooleanExam.java b/ch01/BooleanExam.java	(rejected hunks)
+@@ -0,0 +1,18 @@
++package ch01;
++
++public class BooleanExam {
++
++	public static void main(String[] args) {
++		boolean stop = false ;
++		
++		if (stop) {
++			System.out.println("�����մϴ�.");
++		} else { 
++			System.out.println("����մϴ�.");
++		}
++				
++		
++		
++	}
++
++}
