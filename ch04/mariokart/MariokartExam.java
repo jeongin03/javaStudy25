@@ -8,6 +8,9 @@ import ch04.mariokart.dto.GliderDTO;
 import ch04.mariokart.dto.ItemDTO;
 import ch04.mariokart.dto.MemberDTO;
 import ch04.mariokart.dto.TireDTO;
+import ch04.mariokart.service.CartService;
+import ch04.mariokart.service.MemberService;
+import ch04.mariokart.service.StatgameService;
 
 public class MariokartExam {
 	// 필드 -> main()메서드가 있는 필드는 static용으로 만듬
