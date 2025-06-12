@@ -29,6 +29,8 @@ values (board_seq.nextval, '사숭이','eee','555')
 insert into member (mno, bwriter, id, pw)
 values (board_seq.nextval, '오숭이','fff','666')
 
+create sequence member_seq increment by 1 start with 1 nocycle nocache
+
 
 select * from member
 

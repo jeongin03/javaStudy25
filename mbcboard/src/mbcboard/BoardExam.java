@@ -3,14 +3,16 @@ package mbcboard;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import mbcboard.dto.MemberDTO;
 import mbcboard.service.BoardService;
+import mbcboard.service.MemberService;
 
 public class BoardExam {
 	// 필드
 	public static Scanner inputStr = new Scanner(System.in);
+	public static MemberDTO session = null ;
 	
 	// 생성자 -> static 블럭
-	
 	
 	
 	// 메서드
@@ -33,6 +35,8 @@ public class BoardExam {
 			switch(select) {
 			case "1" :
 				System.out.println("회원용 서비스로 진입합니다.");
+				MemberService memberService = new MemberService() ;
+				memberService.subMenu(inputStr);
 				break;
 			case "2" :
 				System.out.println("게시판 서비스로 진입합니다.");
