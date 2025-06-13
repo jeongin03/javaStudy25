@@ -48,7 +48,8 @@ bdate date not null
 
 create sequence board_seq increment by 1 start with 1 nocycle nocache
 
-alter table board add constraint board_member_fr foreign key (bwriter) references member(id)
+alter table board add constraint board_member_fr foreign key (bwriter) references member(id) on delete cascade
+alter table board drop constraint board_member_fr
 -- board 테이블은 member의 자식 테이블로 member에 mname과 board에 bwriter를 관계 설정 (외래키)
 -- ORA-02267: column type incompatible with referenced column type ->  pk와 fk를 붙여야함/
 -- pk와  fk를 확인하고 연결 -> 자식테이블에 더미데이터를 삭제하고 실행해보자.

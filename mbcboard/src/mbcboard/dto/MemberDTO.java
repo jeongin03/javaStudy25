@@ -1,5 +1,7 @@
 package mbcboard.dto;
 
+import java.sql.Date;
+
 import javax.xml.crypto.Data;
 
 public class MemberDTO {
@@ -10,7 +12,8 @@ public class MemberDTO {
 	private String bwriter ; // 작성자
 	private String id ; // 아이디
 	private String pw ; // 비번
-	private Data regidate ; // javax.xml.crypto.Data; 날짜 
+	private Date regidate ; // javax.xml.crypto.Data; 날짜 
+	
 
 	
 	// 생성자
@@ -22,13 +25,13 @@ public class MemberDTO {
 	public String getBwriter() {return bwriter;}
 	public String getId() {return id;}
 	public String getPw() {return pw;}
-	public Data getRegidate() {return regidate;}
+	public Date getRegidate() {return regidate;}
 	
 	public void setMno(int mno) {this.mno = mno;}
 	public void setBwriter(String bwriter) {this.bwriter = bwriter;}
 	public void setId(String id) {this.id = id;}
 	public void setPw(String pw) {this.pw = pw;}
-	public void setRegidate(Data regidate) {this.regidate = regidate;}
+	public void setRegidate(Date date) {this.regidate = date;}
 	
 	
 

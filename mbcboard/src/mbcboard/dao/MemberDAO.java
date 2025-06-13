@@ -1,11 +1,13 @@
 package mbcboard.dao;
 
-import java.beans.Statement;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
 
 import mbcboard.dto.MemberDTO;
 
@@ -17,6 +19,8 @@ public class MemberDAO {
 	// 3단계 : 쿼리문을 실행한다.
 	// 4단계 : 쿼리문 실행 결과를 받는다.
 	// 5단계 : 연결 종료를 진행한다.
+	
+	// try, catch : 예외 전문
 	
 	// 필드 
 	public MemberDTO memberDTO = new MemberDTO();
@@ -105,6 +109,144 @@ public class MemberDAO {
 		
 		return false;
 	}
+
+	public MemberDTO inputlogin(MemberDTO memberDTO)throws SQLException {
+		// 로그인 id & PW가 일치한지, id만 틀린지 확인 메서드
+		
+		try {
+			String sql = "select * from member where id = ? and pw = ? " ;
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, memberDTO.getId() );
+			preparedStatement.setString(2, memberDTO.getPw() );
+			resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				MemberDTO member = new MemberDTO();
+				
+				member.setId(resultSet.getString("id"));
+				member.setPw(resultSet.getString("pw"));
+				member.setMno(resultSet.getInt("mno"));
+				member.setRegidate(resultSet.getDate("regidate"));
+				
+				return member;
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("sql문이 잘못 되었습니다. 확인 부탁요");
+			e.printStackTrace();
+		}finally {
+			resultSet.close();
+			preparedStatement.close();
+		}
+		return null;
+	}
+
+	public void listAll() throws SQLException{
+		// 회원 정보 목록 보기
+
+		try {
+			String sql = "select * from member";
+			
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+           
+				System.out.println(resultSet.getString("id") + "\t" + resultSet.getString("bwriter") + "\t" + resultSet.getInt("mno") + "\t" + resultSet.getDate("regidate"));
+				
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL문이 잘못된거 갔습니다.");
+			e.printStackTrace();			
+		}finally {
+			resultSet.close();
+			preparedStatement.close();
+		}
+		
+	}
+
+	public void Update(MemberDTO session, String newpw) throws SQLException {
+		// 비밀번호 수정
+		
+		try {
+			String sql = "update member set pw = ? where id =? ";
+			preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setString(1, newpw );
+			preparedStatement.setString(2, session.getId());
+			result = preparedStatement.executeUpdate();		
+
+			if (result > 0 ) {
+				System.out.println("비밀번호가 수정이 되었습니다.");
+			} else {
+				System.out.println("비밀번호 수정 실패");
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL문이 잘못되었습니다.");
+			e.printStackTrace();
+		}finally {
+			preparedStatement.close();
+		}
+		
+	} // Update
+
+	public boolean delete(MemberDTO session, Scanner inputStr) throws SQLException {
+		// 회원 쫒아내기.
+				
+		try {
+			String sql = "delete from member where id = ? ";
+			preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setString(1, session.getId());
+			
+			String[] questions = {
+					
+	                 "현재 계정 탈퇴를 진행하시겠습니까?",
+	                 "정말 탈퇴를 하시겠습니까?",
+	                 "진짜로 탈퇴 하시겠습니까?",
+	                 "진심으로 원하십니까?",
+	                 "정말로 정말로 원하십니까?",
+	                 "감히 날 떠나겠습니까?",
+	                 "감히? 님이? 날 ? ",
+	                 "진짜 레알로 탈퇴를 원하십니까?",
+	                 "징짜루?"
+	             };
+			int confirmCount = 0;
+			for (int j = 0; j < questions.length; j++) {
+                System.out.println(questions[j]);
+                System.out.print("1. 예 | 2. 아니오\n>>> ");
+                String select = inputStr.next();
+
+                if (select.equals("1")) {
+                    confirmCount++;
+                } else {
+                    System.out.println("회원탈퇴가 취소되었습니다.");
+                    return false; // 함수 종료
+                }
+			}
+			
+			if (confirmCount == 9) {
+				result = preparedStatement.executeUpdate();
+				
+				if (result > 0) {
+					System.out.println("잘가");
+				}
+				else {
+					System.out.println("회원탈퇴 실패!!");
+				}
+            }
+		} catch (SQLException e) {
+			System.out.println("SQL문이 잘못되었습니다.");
+			e.printStackTrace();
+		} finally {
+			preparedStatement.close();
+		}
+		return true;
+	}
+	
+
+	
 	
 	
 

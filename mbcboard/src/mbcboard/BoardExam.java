@@ -12,6 +12,7 @@ public class BoardExam {
 	public static Scanner inputStr = new Scanner(System.in);
 	public static MemberDTO session = null ;
 	
+	
 	// 생성자 -> static 블럭
 	
 	
@@ -36,7 +37,7 @@ public class BoardExam {
 			case "1" :
 				System.out.println("회원용 서비스로 진입합니다.");
 				MemberService memberService = new MemberService() ;
-				memberService.subMenu(inputStr);
+				session = memberService.subMenu(inputStr, session);
 				break;
 			case "2" :
 				System.out.println("게시판 서비스로 진입합니다.");
